@@ -39,7 +39,7 @@ public class String1
      *  helloName("X") → "Hello X!"
      */
     public String helloName(String name) {
-        return unimplemented;
+        return ("Hello "+name+"!");
     }
 
     /*
@@ -50,7 +50,7 @@ public class String1
      * makeAbba("What", "Up") → "WhatUpUpWhat"
      */
     public String makeAbba(String a, String b) {
-        return unimplemented;
+        return (a+b+b+a);
     }
 
     /*
@@ -62,7 +62,7 @@ public class String1
      * makeTags("cite", "Yay") → "<cite>Yay</cite>"
      */
     public String makeTags(String tag, String word) {
-        return unimplemented;
+        return ("<"+tag+">"+word+"</"+tag+">");
     }
 
     /*
@@ -76,7 +76,9 @@ public class String1
      * makeOutWord("[[]]", "word") → "[[word]]"
      */
     public String makeOutWord(String out, String word) {
-        return unimplemented;
+        String start = out.substring(0, 2);
+        String end = out.substring(2);
+        return (start+word+end);
     }
 
     /*
@@ -87,7 +89,9 @@ public class String1
      * extraEnd("Hi") → "HiHiHi"
      */
     public String extraEnd(String str) {
-        return unimplemented;
+        int length = str.length();
+        String L2 = str.substring(length-2);
+        return (L2+L2+L2);
     }
 
     /*
@@ -100,7 +104,16 @@ public class String1
      * firstTwo("ab") → "ab"
      */
     public String firstTwo(String str) {
-        return unimplemented;
+        int length = str.length();
+        if(length < 1){
+            return "";
+        }
+        else if(length < 2){
+            return (str.substring(0, 1));
+        }
+        else{
+        return (str.substring(0, 2));
+    }
     }
 
     /*
@@ -110,7 +123,8 @@ public class String1
      * firstHalf("abcdef") → "abc"
      */
     public String firstHalf(String str) {
-        return unimplemented;
+        int length = str.length();
+        return (str.substring(0, length/2));
     }
 
     /*
@@ -121,7 +135,8 @@ public class String1
      * withoutEnd("coding") → "odin"
      */
     public String withoutEnd(String str) {
-        return unimplemented;
+        int length = str.length();
+        return str.substring(1, length-1);
     }
 
     /*
@@ -133,7 +148,14 @@ public class String1
      * comboString("aaa", "b") → "baaab"
      */
     public String comboString(String a, String b) {
-        return unimplemented;
+        int length1 = a.length();
+        int length2 = b.length();
+        if(length1 < length2){  
+        return (a+b+a);
+    }
+    else{
+        return (b+a+b);
+    }
     }
 
     /*
@@ -144,7 +166,8 @@ public class String1
      * middleThree("solving") → "lvi"
      */
     public String middleThree(String str) {
-        return unimplemented;
+        int length = str.length();
+        return str.substring(length/2 - 1, length/2 + 2);
     }
 
     /*
@@ -155,7 +178,13 @@ public class String1
      * extraFront("H") → "HHH"
      */
     public String extraFront(String str) {
-        return unimplemented;
+        int length = str.length();
+        String x;
+        if(length >1){
+        x = str.substring(0, 2);
+    }
+    else{x = str.substring(0,1);}
+        return x+x+x;
     }
 
     /*
@@ -166,7 +195,7 @@ public class String1
      * left2("Hi") → "Hi"
      */
     public String left2(String str) {
-        return unimplemented;
+        return str.substring(2) + str.substring(0, 2);
     }
 
     /*
@@ -178,25 +207,40 @@ public class String1
      * hasBad("xxbadxx") → false
      */
     public boolean hasBad(String str) {
+        String bad = "bad";
+        if(bad.equals(str.substring(0, 3))){
+            return true;
+        }
+        else if(bad.equals(str.substring(1, 4))){
+            return true;
+        }
+        else{
         return false;
+    }
     }
 
     /*
      * Given two strings, append them together (known as "concatenation") and return the result. 
      * However, if the concatenation creates a double-char, then omit one of the chars, 
-     * 	so "abc" and "cat" yields "abcat".
+     *     so "abc" and "cat" yields "abcat".
      * conCat("abc", "cat") → "abcat"
      * conCat("dog", "cat") → "dogcat"
      * conCat("abc", "") → "abc"
      */
     public String conCat(String a, String b) {
-        return unimplemented;
+        if(b.length()>0){
+        if((b.substring(0, 1)).equals((a.substring(a.length() - 1)))){
+            b = b.substring(1);
+        }
+    }
+
+        return a + b;
     }
 
     /*
      *Given two strings, append them together (known as "concatenation") and return the result. 
      *However, if the strings are different lengths, omit chars from the longer string 
-     *	so it is the same length as the shorter string. 
+     *    so it is the same length as the shorter string. 
      *So "Hello" and "Hi" yield "loHi". 
      *The strings may be any length.
      *minCat("Hello", "Hi") → "loHi"
@@ -204,7 +248,17 @@ public class String1
      *minCat("java", "Hello") → "javaello"
      */
     public String minCat(String a, String b) {
-        return unimplemented;
+        int x = a.length() - b.length();
+        String newA = a;
+        String newB = b;
+        if(a.length() > b.length()){
+            newA = a.substring(Math.abs(x));
+        }
+        else if(b.length() > a.length()){
+            newB = b.substring(Math.abs(x));
+        }
+        
+        return newA + newB;
     }
 
     /*
@@ -215,7 +269,13 @@ public class String1
      * withoutX("Hxix") → "Hxi"
      */
     public String withoutX(String str) {
-        return unimplemented;
+        if(str.substring(0, 1).equals("x")){
+            str = str.substring(1);
+        }
+        if((str.substring(str.length() - 1)).equals("x")){
+            str = str.substring(0, str.length() - 1);
+        }
+        return str;
     }
 
     /*
@@ -228,7 +288,17 @@ public class String1
      * deFront("away") → "aay"
      */
     public String deFront(String str) {    
-        return unimplemented;
+        if(str.substring(0, 1) == "a" && str.substring(1, 2) == "b"){
+            return str;
+        }
+        else if(str.substring(1, 2).equals("b")){
+            return str.substring(1);
+        }
+        else if(str.substring(0, 1).equals("a")){
+            return str.substring(0, 1) + str.substring(2);
+        }
+        else{
+        return str.substring(2);}
     }
 
 }
